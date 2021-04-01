@@ -1,7 +1,10 @@
 const path = require('path')
 
-function HomePage(req, res){
+exports.HomePage = function (req, res){
   res.render('index')
 }
 
-exports.HomePage = HomePage
+exports.myMiddleware = function (req, res, next){
+  console.log("Middleware dentro do controller")
+  next()
+}
