@@ -18,8 +18,14 @@ app.on('dbconect', () => {
   console.log("Aplicação iniciada na porta", port)
   fs.writeFile(__dirname + '/logs/StartServer.txt', startServer(), {flag: 'a', encoding: 'utf8'})
 
+  app.use(express.urlencoded({extended: true}))
+
   app.get('/:nome?/:idade?', (req, res) => {
     res.sendFile(__dirname + '/index.html')
+  })
+
+  app.post('/', (req, res) => {
+    res.send(req.body)
   })
 
   app.listen(port)
