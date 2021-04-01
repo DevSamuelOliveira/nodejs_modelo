@@ -19,7 +19,7 @@ app.on('dbconect', () => {
   fs.writeFile(__dirname + '/logs/StartServer.txt', startServer(), {flag: 'a', encoding: 'utf8'})
 
   app.get('/:nome?/:idade?', (req, res) => {
-    res.send(req.query)
+    res.sendFile(__dirname + '/index.html')
   })
 
   app.listen(port)
