@@ -1,7 +1,7 @@
 const path = require('path')
 
 function HomePage(req, res){
-  res.sendFile(path.resolve(__dirname, '../index.html'))
+  res.render(path.resolve(__dirname, '../index.ejs'))
 }
 
 exports.HomePage = HomePage
