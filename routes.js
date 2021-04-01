@@ -1,8 +1,8 @@
 const express = require('express')
 const route = express.Router()
 const homeController = require('./src/controllers/homeController')
-const {myMiddleware} = require('./src/middlewares/middlewares')
+const middlewares = require('./src/middlewares/middlewares')
 
-route.get('/', myMiddleware, homeController.HomePage) 
+route.get('/', homeController.HomePage) 
 
 module.exports = route

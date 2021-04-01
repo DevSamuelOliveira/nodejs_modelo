@@ -6,11 +6,14 @@ const app = express()
 const port = process.env.port || 3000
 const data = new Date()
 const routes = require('./routes')
+const middlewareGlobal = require('./src/middlewares/middleGlobal')
 
 app.set('view engine', 'ejs')
 app.set('views', './src/views')
 
 app.use(express.static('./public'))
+
+app.use(middlewareGlobal)
 
 app.use(routes)
 
