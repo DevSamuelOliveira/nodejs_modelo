@@ -19,6 +19,9 @@ app.on('dbconect', () => {
   console.log("Aplicação iniciada na porta", port)
   fs.writeFile(__dirname + '/logs/StartServer.txt', startServer(), {flag: 'a', encoding: 'utf8'})
 
+  app.set('view engine', 'ejs')
+  app.set('views', './src/views')
+
   app.use(routes)
 
   app.listen(port)
