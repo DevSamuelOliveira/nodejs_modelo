@@ -1,8 +1,7 @@
 const express = require('express')
 const route = express.Router()
+const homeController = require('./controllers/homeController')
 
-route.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
-})
+route.get('/', homeController.HomePage) 
 
 module.exports = route
