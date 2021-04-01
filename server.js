@@ -7,6 +7,16 @@ const port = process.env.port || 3000
 const data = new Date()
 const routes = require('./routes')
 
+app.set('view engine', 'ejs')
+app.set('views', './src/views')
+
+app.use(express.static('./public'))
+
+app.use(routes)
+
+console.log("Aplicação iniciada na porta", port)
+app.listen(port)
+
 mongoose.connect(process.env.conection, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Conectado no banco com sucesso")
@@ -16,17 +26,7 @@ mongoose.connect(process.env.conection, { useNewUrlParser: true, useUnifiedTopol
   })
 
 app.on('dbconect', () => {
-  console.log("Aplicação iniciada na porta", port)
   fs.writeFile(__dirname + '/logs/StartServer.txt', startServer(), {flag: 'a', encoding: 'utf8'})
-
-  app.set('view engine', 'ejs')
-  app.set('views', './src/views')
-
-  app.use(express.static('./public'))
-
-  app.use(routes)
-
-  app.listen(port)
 })
 
 app.on('dberror', () => {
