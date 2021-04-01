@@ -18,8 +18,8 @@ app.on('dbconect', () => {
   console.log("Aplicação iniciada na porta", port)
   fs.writeFile(__dirname + '/logs/StartServer.txt', startServer(), {flag: 'a', encoding: 'utf8'})
 
-  app.get('/', () => {
-    send('rota default criada')
+  app.get('/', (req, res) => {
+    res.send('rota default criada')
   })
 
   app.listen(port)
